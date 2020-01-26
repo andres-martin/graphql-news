@@ -9,6 +9,7 @@ const typeDefs = `
     id: Int!
     url: String!
     description: String
+    author: User!
   }
   
   type User {
@@ -26,8 +27,8 @@ const typeDefs = `
 `;
 
 const links = [
-  { id: 0, url: 'https://google.com', description: 'Google' },
-  { id: 1, url: 'https://github.com', description: 'GitHub' },
+  { id: 0, author: 0, url: 'https://google.com', description: 'Google' },
+  { id: 1, author: 1, url: 'https://github.com', description: 'GitHub' },
 ];
 
 const users = [
@@ -41,6 +42,10 @@ const resolvers = {
     link: (_, { id }) => find(links, { id }),
     allUsers: () => users,
     user: (_, { id }) => find(users, { id }),
+  },
+  Link: {
+    // this resolver is for the nested query with User model
+    author: ({ author }) => find(users, { id: author }),
   },
 };
 
@@ -68,4 +73,4 @@ app.use(
   })
 );
 
-app.listen(4000, () => console.log('server up and running on localhost:4000/graphql'));
+app.listen(4000, () => console.log('Server up and running on localhost:4000/graphql'));
