@@ -1,8 +1,8 @@
 # GraphQL News
 This repository serves as the monorepo codebase for the GraphQL News API & Client built in the [GraphQL in Motion](https://www.manning.com/livevideo/graphql-in-motion) video course. Every line of code written throughout the course that does not contain sensitive deployment information lives in this repository.
 
-### Codebase 
-**Full-stack JavaScript:** This repository is comprised of two main components. The API, written in Node.js, and the client, written in React. Almost all of the code you'll touch in this codebase will be JavaScript, aside from the SCSS used for styling.  
+### Codebase
+**Full-stack JavaScript:** This repository is comprised of two main components. The API, written in Node.js, and the client, written in React. Almost all of the code you'll touch in this codebase will be JavaScript, aside from the SCSS used for styling.
 
 **Folder Structure**
 ```
@@ -23,8 +23,8 @@ git clone git@github.com:graphql-in-motion/graphql-news.git
 If you recieve a `Permission denied` error using `ssh`, please refer [here](https://help.github.com/en/articles/error-permission-denied-publickey), or use the `https` link as a fallback.
 ```
 git clonse https://github.com/graphql-in-motion/graphql-news.git
-``` 
-**Installation** 
+```
+**Installation**
 1. **Install MongoDB:** See [the MongoDB documentation](https://docs.mongodb.com/manual/installation/) for instructions on installing it on your system's OS.
 2. **Install yarn:** We use [yarn](https://yarnpkg.com/en/) to handle our JavaScript dependencies.
 ```
@@ -36,7 +36,7 @@ yarn install
 ```
 
 ### Running the app locally
-**Background Services**  
+**Background Services**
 Whenever you want to run the GraphQL News client locally, you'll have to have MongoDB running in the background.
 ```
 mongod
@@ -46,10 +46,12 @@ Depending on what you'd like to do, you have two options for running the server.
 ```
 yarn start:server
 ```
-**Develop the client UI**  
+**Develop the client UI**
 To develop the frontend and run app in development mode (see [the Create React App documentation](https://github.com/facebook/create-react-app) for more info) run
 ```
 yarn dev:web
 ```
 > Note: If something didn't work or you ran into troubles please submit PRs to improve this doc and keep it up to date!
+
+
 ** Source Manning **
