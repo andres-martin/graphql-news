@@ -2,18 +2,26 @@ import { buildSchema, graphql } from 'graphql';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import { makeExecutableSchema } from 'graphql-tools';
-
-const app = express();
+import { find } from 'lodash';
 
 const typeDefs = `
   type Link {
-    id: ID!
+    id: Int!
     url: String!
-    description: String! 
+    description: String
+  }
+  
+  type User {
+    id: Int!
+    username: String!
+    about: String
   }
 
   type Query {
-    links: [Link!]!
+    allLinks: [Link],
+    link(id: Int!): Link
+    allUsers: [User]
+    user(id: Int!): User
   }
 `;
 
@@ -22,9 +30,17 @@ const links = [
   { id: 1, url: 'https://github.com', description: 'GitHub' },
 ];
 
+const users = [
+  { id: 0, username: 'user1', about: 'The first user' },
+  { id: 1, username: 'user2', about: 'The second user' },
+];
+
 const resolvers = {
   Query: {
-    links: () => links,
+    allLinks: () => links,
+    link: (_, { id }) => find(links, { id }),
+    allUsers: () => users,
+    user: (_, { id }) => find(users, { id }),
   },
 };
 
@@ -40,6 +56,9 @@ const schema = makeExecutableSchema({
 // graphql(schema, '{ hello }', root).then(response => {
 //   console.log(response);
 // });
+
+const app = express();
+
 app.use(
   '/graphql',
   graphqlHTTP({
@@ -49,6 +68,4 @@ app.use(
   })
 );
 
-app.listen(4000);
-
-console.log('server up and running on localhost:4000/graphql');
+app.listen(4000, () => console.log('server up and running on localhost:4000/graphql'));
