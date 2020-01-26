@@ -52,3 +52,4 @@ To develop the frontend and run app in development mode (see [the Create React A
 yarn dev:web
 ```
 > Note: If something didn't work or you ran into troubles please submit PRs to improve this doc and keep it up to date!
+** Source Manning **
